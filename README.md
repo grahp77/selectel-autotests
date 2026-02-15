@@ -136,8 +136,9 @@ pytest -v
 pytest --html=report.html --self-contained-html
 
 ## 📦 Зависимости
-
+```
 pytest==8.3.5
 selenium==4.27.1
 webdriver-manager==4.0.2
 pytest-html==4.1.1
+```
