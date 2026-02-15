@@ -106,7 +106,7 @@ pytest tests/test_registration_valid.py::TestRegistrationValid::test_checkbox -v
 
 # 9. Запустить с генерацией HTML-отчета
 pytest --html=report.html --self-contained-html
-
+```
 
 ## ✅ Тесты (7 шт)
 
@@ -130,7 +130,7 @@ python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 pytest -v
-
+```
 ## 📊 Отчет
 
 pytest --html=report.html --self-contained-html
