@@ -84,20 +84,16 @@ class RegistrationPage:
     def click_newsletter_checkbox(self):
         """Кликнуть на чекбокс рассылки через input"""
         try:
-            # Ищем input типа checkbox (он перекрывает span)
             checkbox_input = self.wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='checkbox'].ant-checkbox-input"))
             )
             
-            # Скроллим до элемента
             self.driver.execute_script("arguments[0].scrollIntoView(true);", checkbox_input)
             time.sleep(0.5)
             
-            # Пробуем кликнуть через JavaScript (надежнее)
             self.driver.execute_script("arguments[0].click();", checkbox_input)
             print("✅ Чекбокс нажат через input")
             
-            # Проверяем состояние по атрибуту checked
             is_checked = checkbox_input.get_attribute("checked") == "true" or checkbox_input.is_selected()
             print(f"Состояние чекбокса: {'выбран' if is_checked else 'не выбран'}")
             
@@ -106,14 +102,12 @@ class RegistrationPage:
         except Exception as e:
             print(f"❌ Ошибка при клике на чекбокс: {e}")
             
-            # Запасной вариант: клик по span
             try:
                 checkbox_span = self.driver.find_element(By.CSS_SELECTOR, "span.ant-checkbox-inner")
                 self.driver.execute_script("arguments[0].click();", checkbox_span)
                 print("✅ Чекбокс нажат через span (запасной вариант)")
                 time.sleep(0.5)
                 
-                # Пробуем определить состояние по родительскому классу
                 parent = checkbox_span.find_element(By.XPATH, "..")
                 parent_class = parent.get_attribute("class")
                 is_checked = "ant-checkbox-checked" in parent_class
@@ -133,7 +127,6 @@ class RegistrationPage:
             button = span.find_element(By.XPATH, "..")
             print(f"Родительский тег: {button.tag_name}")
             
-            # Кликаем через JavaScript для надежности
             self.driver.execute_script("arguments[0].click();", button)
             print("✅ Кнопка создания аккаунта нажата через JavaScript")
             time.sleep(2)
