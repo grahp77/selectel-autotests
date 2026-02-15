@@ -40,5 +40,5 @@
 
 1. **Клонировать репозиторий**
    ```bash
-   git clone https://github.com/ВАШ_АККАУНТ/selectel-autotests.git
+   git clone https://github.com/grahp77/selectel-autotests.git
    cd selectel-autotests
